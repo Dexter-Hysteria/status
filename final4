@@ -6,17 +6,6 @@ GREEN='\033[01;32m';
 WHITE='\033[01;37m';
 YELLOW='\033[00;33m';
 
-startinstall(){
-apt update
-apt install -y curl wget cron python-minimal libpython-stdlib
-apt install -y iptables
-apt install -y openvpn netcat httpie php neofetch vnstat
-apt install -y screen squid stunnel4 dropbear gnutls-bin python
-apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
-apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
-mkdir /etc/update-motd.d
-apt-get install inxi screenfetch lolcat figlet -y
-
 clear
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 figlet -k Dex Hysteria | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
@@ -29,6 +18,17 @@ echo -e " \033[0;35m════════════════════
 echo -e " \033[0;31m Wait 10 Seconds to Start Installing!!!!\033[0m"
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 sleep 10
+
+startinstall(){
+apt update
+apt install -y curl wget cron python-minimal libpython-stdlib
+apt install -y iptables
+apt install -y openvpn netcat httpie php neofetch vnstat
+apt install -y screen squid stunnel4 dropbear gnutls-bin python
+apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
+apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
+mkdir /etc/update-motd.d
+apt-get install inxi screenfetch lolcat figlet -y
 
 /bin/cat <<"EOM" >/etc/update-motd.d/01-custom
 #!/bin/sh
