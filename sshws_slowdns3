@@ -29,12 +29,7 @@ sleep 10
 
 startinstall(){
 apt update
-apt install -y curl wget cron python-minimal libpython-stdlib
-apt install -y iptables
-apt install -y openvpn netcat httpie php neofetch vnstat
-apt install -y screen squid stunnel4 dropbear gnutls-bin python
-apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
-apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
+apt-get install netcat lsof php php-mysqli php-mysql php-gd php-mbstring python -y
 mkdir /etc/update-motd.d
 apt-get install inxi screenfetch lolcat figlet -y
 
@@ -767,6 +762,22 @@ swapoff -a && swapon -a
 echo "Ram Cleaned!"
 EOM
 
+bash /root/auto
+
+crontab -r
+echo "SHELL=/bin/bash
+* * * * * /bin/bash /root/auto >/dev/null 2>&1
+0 * * * * /bin/bash /bin/dnsttauto.sh >/dev/null 2>&1" | crontab -
+}
+
+display_menu () {
+clear
+echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
+figlet -k Dex Script | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
+echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
+}
+
+installing_api(){
 /bin/cat <<"EOM" >/root/cron.sh
 php /usr/local/sbin/ssh.php
 chmod +x /root/active.sh
@@ -777,21 +788,8 @@ EOM
 
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/auth_prem.sh -q
 
-bash /root/auto
-bash /root/cron.sh
-
 crontab -r
-echo "SHELL=/bin/bash
-* * * * * /bin/bash /root/auto >/dev/null 2>&1
-0 * * * * /bin/bash /bin/dnsttauto.sh >/dev/null 2>&1
-*/2 * * * * /bin/bash /root/cron.sh >/dev/null 2>&1" | crontab -
-}
-
-display_menu () {
-clear
-echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-figlet -k Dex Script | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
-echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
+(crontab -l 2>/dev/null || true; echo "*/2 * * * * /bin/bash /root/cron.sh") | crontab -
 }
 
 ports () {
@@ -1068,5 +1066,6 @@ chmod +x /usr/local/sbin/*
 startinstall
 controls
 clear
+installing_api
 display_menu
 ports
