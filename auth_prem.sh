@@ -29,8 +29,8 @@ function encrypt_key($paswd)
 	 
 	function getEncryptKey()
 	{
-		$secret_key = md5('dextereskalarte');
-		$secret_iv = md5('philippines');
+		$secret_key = md5('eugcar');
+		$secret_iv = md5('sanchez');
 		$keys = $secret_key . $secret_iv;
 		return encryptor('encrypt', $keys);
 	}
@@ -67,8 +67,8 @@ function encrypt_key($paswd)
 
 		$encrypt_method = "AES-256-CBC";
 		//pls set your unique hashing key
-		$secret_key = md5('dextereskalarte');
-		$secret_iv = md5('philippines');
+		$secret_key = md5('eugcar sanchez');
+		$secret_iv = md5('sanchez eugcar');
 
 		// hash
 		$key = hash('sha256', $secret_key);
