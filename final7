@@ -20,7 +20,7 @@ apt-get install inxi screenfetch lolcat figlet -y
 
 clear
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-figlet -k Dex Hysteria | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
+figlet -k Dex Script | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 echo ""
 read -p "Please enter ns host for Slowdns: " NS
@@ -805,7 +805,7 @@ sh active.sh | tee -a  /root/active.sh
 display_menu () {
 clear
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-figlet -k Dex Hysteria | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
+figlet -k Dex Script | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 }
 
