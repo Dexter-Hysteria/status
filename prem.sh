@@ -107,10 +107,7 @@ if($query->num_rows > 0)
 		$password = decrypt_key($row['user_pass']);
 		$password = encryptor('decrypt',$password);	
 		$userid	= $row['user_id'];
-		
-		$data .= '/usr/sbin/userdel '.$username.''.PHP_EOL;
-		$data .= '/usr/sbin/useradd -p $(openssl passwd -1 '.$password.') -M '.$username.' -u '.$userid.' -o --shell=/sbin/nologin --no-create-home;'.PHP_EOL;
-	
+		$data .= '/usr/sbin/useradd -p $(openssl passwd -1 '.$password.') -M '.$username.' -u '.$userid.' -o --shell=/bin/false --no-create-home;'.PHP_EOL;
 	}
 }
 $location = '/root/active.sh';
@@ -125,12 +122,11 @@ $premium_deactived = "duration <= 0";
 $vip_deactived = "vip_duration <= 0";
 $private_deactived = "private_duration <= 0";
 $is_validated = "is_validated=0";
-$is_activate = "is_active=0";
 $freeze = "is_freeze=1";
 
 
 $query2 = $mysqli->query("SELECT * FROM users 
-WHERE ".$freeze." OR ".$premium_deactived." AND ".$vip_deactived ." AND ".$private_deactived." OR ".$is_activate."
+WHERE ".$freeze." OR ".$premium_deactived." AND ".$vip_deactived ." AND ".$private_deactived."
 ");
 if($query2->num_rows > 0)
 {
