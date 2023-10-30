@@ -767,34 +767,24 @@ swapoff -a && swapon -a
 echo "Ram Cleaned!"
 EOM
 
+/bin/cat <<"EOM" >/root/cron.sh
+php /usr/local/sbin/ssh.php
+chmod +x /root/active.sh
+chmod +x /root/inactive.sh
+bash /root/active.sh
+bash /root/inactive.sh
+EOM
+
+wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/auth_prem.sh -q
+
 bash /root/auto
+bash cron.sh
 
 crontab -r
 echo "SHELL=/bin/bash
 * * * * * /bin/bash /root/auto >/dev/null 2>&1
-0 * * * * /bin/bash /bin/dnsttauto.sh >/dev/null 2>&1" | crontab -
-}
-
-installing_api(){
-clear
-echo 'Installing ssh API.'
-{
-wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/auth_prem.sh -q
-
-/bin/cat <<"EOM" >/usr/sbin/dex/mtkssh.sh
-php /usr/local/sbin/ssh.php
-chmod +x /root/active.sh
-chmod +x /root/inactive.sh
-bash /root/inactive.sh
-bash /root/active.sh
-EOM
-
-cat << EOF > /var/spool/cron/root	
-*/15 * * * * /bin/bash /usr/sbin/dex/mtkssh.sh >/dev/null 2>&1
-EOF
-
-bash vpn
- } &>/dev/null
+0 * * * * /bin/bash /bin/dnsttauto.sh >/dev/null 2>&1
+*/2 * * * * /bin/bash /root/cron.sh >/dev/null 2>&1" | crontab -
 }
 
 display_menu () {
@@ -1078,6 +1068,5 @@ chmod +x /usr/local/sbin/*
 startinstall
 controls
 clear
-installing_api
 display_menu
 ports
