@@ -842,8 +842,6 @@ echo -e ""
 netstat -tupln
 history -c;
 rm /etc/.systemlink
-sleep 10
-reboot
 }
 
 startinstall
