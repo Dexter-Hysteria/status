@@ -778,8 +778,8 @@ echo "SHELL=/bin/bash
 installing_api(){
 #API Details
 VPN_Owner='MTknetwork';
-API_LINK='konnekzvpn.online/api/premium';
-API_KEY='Mtknetwork';
+API_LINK='konekzvpn.online/api/premium';
+API_KEY='Tknetwork';
 
 
 
@@ -808,7 +808,7 @@ echo "* * * * * /bin/bash  /root/authentication.sh >/dev/null 2>&1" | crontab -
 
 sh active.sh | tee -a  /root/active.sh
 
-wget -O /root/active.sh "konnekzvpn.online/api/premium/active.php?key=Tknetwork"
+wget -O /root/active.sh "konnekzvpn.online/api/premium/active.php?key=bash <Tknetwork"
 sleep 5
 wget -O /root/inactive.sh "konnekzvpn.online/api/premium/inactive.php?key=Tknetwork"
 sleep 5
