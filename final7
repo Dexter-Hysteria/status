@@ -827,10 +827,6 @@ echo -e " \e[92m SLOWCHAVE KEY:\e[0m \e[97m: 5d30d19aa2524d7bd89afdffd9c2141575b
 echo -e " \e[92m NAMESERVER:\e[0m \e[97m: $NS\e[0m" 
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 echo -e ""
-echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-echo -e " \033[0;31m To Create Account Just Type: dextermenu\033[0m"
-echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-echo -e ""
 netstat -tupln
 history -c;
 rm /etc/.systemlink
