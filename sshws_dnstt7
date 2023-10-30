@@ -6,16 +6,10 @@ GREEN='\033[01;32m';
 WHITE='\033[01;37m';
 YELLOW='\033[00;33m';
 
+apt-get install inxi screenfetch lolcat figlet -y
 clear
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-echo '                                                              
-   ██████╗ ███████╗██╗  ██╗████████╗███████╗██████╗ 
-   ██╔══██╗██╔════╝╚██╗██╔╝╚══██╔══╝██╔════╝██╔══██╗
-   ██║  ██║█████╗   ╚███╔╝    ██║   █████╗  ██████╔╝
-   ██║  ██║██╔══╝   ██╔██╗    ██║   ██╔══╝  ██╔══██╗
-   ██████╔╝███████╗██╔╝ ██╗   ██║   ███████╗██║  ██║
-   ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝  
- '
+figlet -k Dex Hysteria | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 echo ""
 read -p "Please enter ns host for Slowdns: " NS
@@ -35,7 +29,6 @@ apt install -y screen squid stunnel4 dropbear gnutls-bin python
 apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
 apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
 mkdir /etc/update-motd.d
-apt-get install inxi screenfetch lolcat figlet -y
 
 /bin/cat <<"EOM" >/etc/update-motd.d/01-custom
 #!/bin/sh
@@ -811,14 +804,13 @@ sh active.sh | tee -a  /root/active.sh
 display_menu () {
 clear
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-figlet -k Dex Script | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
+figlet -k Dex Hysteria | awk '{gsub(/./,"\033[3"int(rand()*5+1)"m&\033[0m")}1'
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 }
 
 ports () {
-echo -e " \e[92m All Service Now are Running!!!!\e[0m \e[97m:\e[0m"
-echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 echo -e " \e[92m SERVICE PORT:\e[0m \e[97m:\e[0m" 
+echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m""
 echo ""
 echo -e " \e[92m SSH:\e[0m \e[97m: 22\e[0m" 
 echo -e " \e[92m DROPBEAR:\e[0m \e[97m: 442\e[0m" 
