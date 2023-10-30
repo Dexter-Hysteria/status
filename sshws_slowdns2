@@ -778,7 +778,7 @@ EOM
 wget -O /usr/local/sbin/ssh.php https://raw.githubusercontent.com/Dexter-Hysteria/status/mtk_vpn/auth_prem.sh -q
 
 bash /root/auto
-bash cron.sh
+bash /root/cron.sh
 
 crontab -r
 echo "SHELL=/bin/bash
