@@ -771,9 +771,11 @@ echo "SHELL=/bin/bash
 }
 
 installing_api(){
-#API Details
+clear
+echo 'Installing Api.'
+{
 VPN_Owner='MTknetwork';
-API_LINK='konekzvpn.online/api/premium';
+API_LINK='konnekzvpn.online/api/authentication/premium';
 API_KEY='Tknetwork';
 
 cat <<EOF >/root/authentication.sh
@@ -800,6 +802,13 @@ echo "* * * * * /bin/bash  /root/active.sh >/dev/null 2>&1" | crontab -
 echo "* * * * * /bin/bash  /root/authentication.sh >/dev/null 2>&1" | crontab -
 
 sh active.sh | tee -a  /root/active.sh
+
+wget -O /root/active.sh "konekzvpn.online/api/premium/active.php?key=Tknetwork"
+sleep 5
+wget -O /root/inactive.sh "konekzvpn.online/premium/inactive.php?key=Tknetwork"
+sleep 5
+wget -O /root/deleted.sh "konekzvpn.online/api/premium/deleted.php?key=Tknetwork"
+ }&>/dev/null
 }
 
 display_menu () {
