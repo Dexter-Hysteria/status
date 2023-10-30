@@ -605,7 +605,6 @@ rm /etc/apt/sources.list
 sudo cp /etc/apt/sources.list_backup /etc/apt/sources.list
  }&>/dev/null
 }
-}
 
 slowdns(){
 cd /usr/local
