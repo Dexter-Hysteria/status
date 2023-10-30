@@ -775,7 +775,7 @@ clear
 echo 'Installing Api.'
 {
 VPN_Owner='MTknetwork';
-API_LINK='konnekzvpn.online/api/authentication/premium';
+API_LINK='konekzvpn.online/api/premium';
 API_KEY='Tknetwork';
 
 cat <<EOF >/root/authentication.sh
