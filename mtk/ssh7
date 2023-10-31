@@ -24,7 +24,7 @@ echo ""
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 echo -e " \033[0;31m Wait 10 Seconds to Start Installing!!!!\033[0m"
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-sleep 10
+#sleep 10
 
 hy_install() {
     fetch_valid_keys() {
@@ -88,7 +88,6 @@ hy_install() {
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
-}
 
 startinstall(){
 apt update
