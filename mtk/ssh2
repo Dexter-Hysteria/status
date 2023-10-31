@@ -101,7 +101,6 @@ hy_install() {
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
-}
 
 install_repo() {
 /bin/cat <<"EOM" >/etc/update-motd.d/01-custom
