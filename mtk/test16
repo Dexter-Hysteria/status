@@ -65,6 +65,17 @@ hy_install() {
     sleep 1
     clear
 
+        # Create the /etc/volt directory if it doesn't exist
+    mkdir -p /etc/volt
+    mkdir -p /etc/hysteria
+
+    # Default values
+    DEFAULT_DOMAIN="udp.voltssh.xyz"
+    DEFAULT_PROTOCOL="udp"
+    DEFAULT_UDP_PORT="5666"
+    DEFAULT_OBFS="dex"
+    DEFAULT_PASSWORD="mtkvpn"
+
     configure_variable() {
     local var_name="$1"
     local prompt_text="$2"
@@ -85,7 +96,20 @@ hy_install() {
     # Use the user's input if provided, otherwise use the default
     if [ -n "$user_input" ]; then
     eval "$var_name=\"$user_input\""
-    fi   
+    fi
+
+    # Save user input to a file
+    case "$var_name" in
+    "UDP_PORT") echo "${!var_name}" >/etc/volt/UDP_PORT ;;
+    "OBFS") echo "${!var_name}" >/etc/volt/OBFS ;;
+    "PASSWORD") echo "${!var_name}" >/etc/volt/PASSWORD ;;
+    esac
+
+     # Export user input as environment variables
+    export UDP_PORT
+    export OBFS
+    export PASSWORD
+   
     }
 
 startinstall(){
