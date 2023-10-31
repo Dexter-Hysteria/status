@@ -63,6 +63,8 @@ apt update
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
+  }
+}
 
 startinstall(){
 apt update
