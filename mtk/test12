@@ -7,7 +7,7 @@ update() {
         keys=$(curl -s "https://raw.githubusercontent.com/Dexter-Hysteria/Voltssh-Udp/mtk_vpn/json_key/key.json") # Replace with the actual URL to fetch the keys
         echo "$keys"
     }
-
+}
     verify_key() {
         local key_to_verify="$1"
         local valid_keys="$2"
@@ -59,7 +59,7 @@ update() {
     echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
     echo -e "\033[1;32m ♻️ Please wait...\033[0m"
     echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-
+}
  
 
 startinstall(){
