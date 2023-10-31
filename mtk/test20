@@ -64,7 +64,7 @@ hy_install() {
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
-   
+ {  
 apt update
 apt install -y curl wget cron python-minimal libpython-stdlib
 apt install -y iptables
@@ -75,6 +75,6 @@ apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
 mkdir /etc/update-motd.d
 apt-get install inxi screenfetch lolcat figlet -y
 }
-
+}
 hy_install
 
