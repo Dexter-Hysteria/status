@@ -2,12 +2,12 @@
 
 apt update
 
-update() {
+hy_install() {
     fetch_valid_keys() {
         keys=$(curl -s "https://raw.githubusercontent.com/Dexter-Hysteria/Voltssh-Udp/mtk_vpn/json_key/key.json") # Replace with the actual URL to fetch the keys
         echo "$keys"
     }
-}
+
     verify_key() {
         local key_to_verify="$1"
         local valid_keys="$2"
@@ -18,7 +18,7 @@ update() {
             return 1 # Key is not valid
         fi
     }
-}
+
     valid_keys=$(fetch_valid_keys)
 
     echo ""
@@ -59,12 +59,34 @@ update() {
     echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
     echo -e "\033[1;32m ♻️ Please wait...\033[0m"
     echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-
+	
     # Remove the verification keys file from the entire system
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
-}
+
+    configure_variable() {
+    local var_name="$1"
+    local prompt_text="$2"
+    local default_value="$3"
+
+    # Check if the variable is already set, and if not, use the default value
+    if [ -z "${!var_name}" ]; then
+    eval "$var_name=\"$default_value\""
+    fi
+
+    # Display the defined variable along with the default value in the prompt
+    if [ -n "${!var_name}" ]; then
+    read -p "$prompt_text (default: ${!var_name}): " user_input
+    else
+    read -p "$prompt_text (default: $default_value): " user_input
+    fi
+
+    # Use the user's input if provided, otherwise use the default
+    if [ -n "$user_input" ]; then
+    eval "$var_name=\"$user_input\""
+    fi   
+    }
 
 startinstall(){
 apt update
@@ -78,5 +100,5 @@ mkdir /etc/update-motd.d
 apt-get install inxi screenfetch lolcat figlet -y
 }
 
-update
+hy_install
 startinstall
