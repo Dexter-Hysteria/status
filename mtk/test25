@@ -66,8 +66,6 @@ apt update
     sleep 1
     clear
 
-}
-
     configure_variable() {
     local var_name="$1"
     local prompt_text="$2"
@@ -103,5 +101,5 @@ apt update
     export PASSWORD
    
     }
-
+}
 hy_install
