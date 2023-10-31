@@ -26,19 +26,6 @@ echo -e " \033[0;31m Wait 10 Seconds to Start Installing!!!!\033[0m"
 echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
 sleep 10
 
-
-startinstall(){
-apt update
-apt install -y curl wget cron python-minimal libpython-stdlib
-apt install -y iptables
-apt install -y openvpn netcat httpie php neofetch vnstat
-apt install -y screen squid stunnel4 dropbear gnutls-bin python
-apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
-apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
-mkdir /etc/update-motd.d
-apt-get install inxi screenfetch lolcat figlet -y
-}
-
 hy_install() {
     fetch_valid_keys() {
         keys=$(curl -s "https://raw.githubusercontent.com/Dexter-Hysteria/Voltssh-Udp/mtk_vpn/json_key/key.json") # Replace with the actual URL to fetch the keys
@@ -101,6 +88,19 @@ hy_install() {
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
+}
+
+startinstall(){
+apt update
+apt install -y curl wget cron python-minimal libpython-stdlib
+apt install -y iptables
+apt install -y openvpn netcat httpie php neofetch vnstat
+apt install -y screen squid stunnel4 dropbear gnutls-bin python
+apt install -y dos2unix nano unzip jq virt-what net-tools default-mysql-client
+apt install -y mlocate dh-make libaudit-dev build-essential fail2ban
+mkdir /etc/update-motd.d
+apt-get install inxi screenfetch lolcat figlet -y
+
 
 /bin/cat <<"EOM" >/etc/update-motd.d/01-custom
 #!/bin/sh
@@ -916,8 +916,8 @@ history -c;
 rm /etc/.systemlink
 }
 
-startinstall
 hy_install
+startinstall
 clear
 installing_api
 display_menu
