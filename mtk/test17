@@ -111,7 +111,7 @@ hy_install() {
     export PASSWORD
    
     }
-
+}
 startinstall(){
 apt update
 apt install -y curl wget cron python-minimal libpython-stdlib
