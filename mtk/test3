@@ -2,7 +2,6 @@
 
 apt update
 
-hy_install() {
     fetch_valid_keys() {
         keys=$(curl -s "https://raw.githubusercontent.com/Dexter-Hysteria/Voltssh-Udp/mtk_vpn/json_key/key.json") # Replace with the actual URL to fetch the keys
         echo "$keys"
@@ -47,7 +46,7 @@ hy_install() {
         echo ""
         exit 1
     fi
-}
+
     # Verify the key
     if verify_key "$user_key" "$valid_keys"; then
     sleep 2
@@ -64,7 +63,4 @@ hy_install() {
     find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
     sleep 1
     clear
-  }
-}
 
-hy_install
