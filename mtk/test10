@@ -59,11 +59,8 @@ update() {
     echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
     echo -e "\033[1;32m ♻️ Please wait...\033[0m"
     echo -e " \033[0;35m══════════════════════════════════════════════════════════════════\033[0m"
-	
-    # Remove the verification keys file from the entire system
-    find / -type f -name "vl_ps.json" -delete >/dev/null 2>&1
-    sleep 1
-    clear
+}	
+ 
 
 startinstall(){
 apt update
