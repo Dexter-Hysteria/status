@@ -66,16 +66,7 @@ apt update
     sleep 1
     clear
 
-        # Create the /etc/volt directory if it doesn't exist
-    mkdir -p /etc/volt
-    mkdir -p /etc/hysteria
-
-    # Default values
-    DEFAULT_DOMAIN="udp.voltssh.xyz"
-    DEFAULT_PROTOCOL="udp"
-    DEFAULT_UDP_PORT="5666"
-    DEFAULT_OBFS="dex"
-    DEFAULT_PASSWORD="mtkvpn"
+}
 
     configure_variable() {
     local var_name="$1"
