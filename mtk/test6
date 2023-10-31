@@ -2,6 +2,7 @@
 
 apt update
 
+update() {
     fetch_valid_keys() {
         keys=$(curl -s "https://raw.githubusercontent.com/Dexter-Hysteria/Voltssh-Udp/mtk_vpn/json_key/key.json") # Replace with the actual URL to fetch the keys
         echo "$keys"
@@ -78,4 +79,5 @@ mkdir /etc/update-motd.d
 apt-get install inxi screenfetch lolcat figlet -y
 }
 
+update
 startinstall
