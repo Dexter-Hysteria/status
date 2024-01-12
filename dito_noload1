@@ -837,7 +837,7 @@ echo "Made with love by: Firenet Developer... " >> /root/.web/index.php
 
 echo "tcp_port=TCP_PORT
 udp_port=UDP_PORT
-socket_port=8060
+socket_port=80
 squid_port=8080
 hysteria_port=5666
 tcp_ssl_port=PORT_SSL
@@ -890,12 +890,9 @@ clear
 echo '++++++++++++++++++++++++++++++++++'
 echo '*       AIO  is ready!    *'
 echo '+++++++++++************+++++++++++'
-echo -e "[IP] : $server_ip\n[Openvpn TCP Port] : $PORT_TCP\n[Openvpn UDP Port] : $PORT_UDP\n[Ssl Port] : $PORT_SSL\n[Proxy Socks ] : 8060\n[Hysteria Port ] : 5666\n[Proxy Squid 1] : 8080\n[Proxy Squid 2] : 3128\n"
+echo -e "[IP] : $server_ip\n[Openvpn TCP Port] : $PORT_TCP\n[Openvpn UDP Port] : $PORT_UDP\n[Ssl Port] : $PORT_SSL\n[Proxy Socks ] : 8060\n[Websocket Proxy ] : 80\n[Hysteria Port ] : 5666\n[Proxy Squid 1] : 8080\n[Proxy Squid 2] : 3128\n"
 history -c;
 rm /usr/local/etc/.system
-echo 'Server will secure this server and reboot after 20 seconds'
-sleep 20
-reboot
 }
 
 server_ip=$(curl -s https://api.ipify.org)
