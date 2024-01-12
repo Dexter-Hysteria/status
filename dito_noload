@@ -847,7 +847,13 @@ sed -i "s|TCP_PORT|$PORT_TCP|g" /root/.ports
 sed -i "s|UDP_PORT|$PORT_UDP|g" /root/.ports
 sed -i "s|PORT_SSL|$PORT_SSL|g" /root/.ports
 
+  }&>/dev/null
+}
 
+start_service () {
+clear
+echo 'Starting..'
+{
 cat <<\EOM >/root/auto
 #!/bin/bash
 
@@ -871,22 +877,10 @@ swapoff -a && swapon -a
 echo "Ram Cleaned!"
 EOM
 
-
 bash /root/auto
 
-crontab -r
-echo "SHELL=/bin/bash
-* * * * * /bin/bash /root/auto >/dev/null 2>&1" | crontab -
-
-  }&>/dev/null
-}
-
-start_service () {
-clear
-echo 'Starting..'
-{
-
 sudo crontab -l | { echo "* * * * * pgrep -x stunnel4 >/dev/null && echo 'GOOD' || /etc/init.d/stunnel4 restart
+* * * * * /bin/bash /root/auto >/dev/null 2>&1
 * * * * * /bin/bash /etc/.ws >/dev/null 2>&1
 * * * * * /bin/bash /etc/.hysteria >/dev/null 2>&1
 * * * * * /bin/bash /etc/.monitor openvpn >/dev/null 2>&1"; } | crontab -
@@ -899,9 +893,6 @@ echo '+++++++++++************+++++++++++'
 echo -e "[IP] : $server_ip\n[Openvpn TCP Port] : $PORT_TCP\n[Openvpn UDP Port] : $PORT_UDP\n[Ssl Port] : $PORT_SSL\n[Proxy Socks ] : 8060\n[Hysteria Port ] : 5666\n[Proxy Squid 1] : 8080\n[Proxy Squid 2] : 3128\n"
 history -c;
 rm /usr/local/etc/.system
-echo 'Server will secure this server and reboot after 20 seconds'
-sleep 20
-reboot
 }
 
 server_ip=$(curl -s https://api.ipify.org)
