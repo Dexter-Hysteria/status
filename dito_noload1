@@ -893,6 +893,9 @@ echo '+++++++++++************+++++++++++'
 echo -e "[IP] : $server_ip\n[Openvpn TCP Port] : $PORT_TCP\n[Openvpn UDP Port] : $PORT_UDP\n[Ssl Port] : $PORT_SSL\n[Proxy Socks ] : 8060\n[Hysteria Port ] : 5666\n[Proxy Squid 1] : 8080\n[Proxy Squid 2] : 3128\n"
 history -c;
 rm /usr/local/etc/.system
+echo 'Server will secure this server and reboot after 20 seconds'
+sleep 20
+reboot
 }
 
 server_ip=$(curl -s https://api.ipify.org)
