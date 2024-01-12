@@ -159,9 +159,17 @@ echo '{
 
 sed -i "s|mediatekvpn|$OBFS|g" /etc/hysteria/config.json
 
+cat <<\EOM >/etc/hysteria/config.sh
+#!/bin/bash
+HOST='DBHOST'
+USER='DBUSER'
+PASS='DBPASS'
+DB='DBNAME'
+EOM
+
 cat <<"EOM" >/etc/hysteria/.auth.sh
 #!/bin/bash
-. /root/.db-base
+. /etc/hysteria/config.sh
 
 if [ $# -ne 4 ]; then
     echo "invalid number of arguments"
@@ -176,9 +184,9 @@ RECV=$4
 USERNAME=$(echo "$AUTH" | cut -d ":" -f 1)
 PASSWORD=$(echo "$AUTH" | cut -d ":" -f 2)
 
-Query="SELECT user_name FROM users WHERE user_name='$USERNAME' AND auth_vpn=md5('$PASSWORD') AND status='live' AND is_freeze=0 AND is_ban=0 AND (duration > 0 OR vip_duration > 0 OR private_duration > 0)"
-user_name=`mysql -u $USER -p$PASS -D $DB -h $HOST -sN -e "$Query"`
-[ "$user_name" != '' ] && [ "$user_name" = "$USERNAME" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'authentication failed.'; exit 1
+Query="SELECT user_name FROM users WHERE user_name='$USERNAME' AND auth_vpn=md5('$PASSWORD') AND is_freeze='0' AND duration > 0"
+username=`mysql -u $USER -p$PASS -D $DB -h $HOST -sN -e "$Query"`
+[ "$username" != '' ] && [ "$username" = "$USERNAME" ] && echo "user : $username" && echo 'authentication ok.' && exit 0 || echo 'Authentication failed.'; exit 1
 EOM
 
 chmod 755 /etc/hysteria/config.json
@@ -365,7 +373,7 @@ reboot
 server_ip=$(curl -s https://api.ipify.org)
 server_interface=$(ip route get 8.8.8.8 | awk '/dev/ {f=NR} f&&NR-1==f' RS=" ")
 
-install_sudo
+#install_sudo
 install_require  
 if [[ $HYSTERIA_TYPE == 'default' ]]; then
 	install_hysteria
