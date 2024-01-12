@@ -360,10 +360,10 @@ echo '++++++++++++++++++++++++++++++++++'
 echo '*       Hysteria  is ready!    *'
 echo '+++++++++++************+++++++++++'
 history -c;
-echo "DB_HOST='$HOST'" >> ~/.db-base
-echo "DB_NAME='$DBNAME'" >> ~/.db-base
-echo "DB_USER='$USER'" >> ~/.db-base
-echo "DB_PASS='$PASS'" >> ~/.db-base
+#echo "DB_HOST='$HOST'" >> ~/.db-base
+#echo "DB_NAME='$DBNAME'" >> ~/.db-base
+#echo "DB_USER='$USER'" >> ~/.db-base
+#echo "DB_PASS='$PASS'" >> ~/.db-base
 rm /usr/local/etc/.system
 echo 'Server will secure this server and reboot after 20 seconds'
 sleep 20
