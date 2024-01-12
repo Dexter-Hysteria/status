@@ -22,12 +22,12 @@ echo $SUB_DOMAIN > /root/subdomain  #save subdomain
 
 DOMAIN=dnstunnel.net
 sub=$(</dev/urandom tr -dc a-z0-9 | head -c6)
-DOMAIN=${sub}.dnstunnel.net
+SUB_DOMAIN=${sub}.dnstunnel.net
 CF_ID=d.eskalarte@gmail.com
 CF_KEY=1d0e138b7b9c1368f6cc1b5f8fef94e3c25a8
 
 
-NS_DOMAIN=mediatekvpn-${DOMAIN}
+NS_DOMAIN=mediatekvpn-${SUB_DOMAIN}
 
 
 set -euo pipefail
